@@ -1,0 +1,21 @@
+﻿@model IEnumerable<dynamic>
+
+<h2>Test Popularity Report</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Test Name</th>
+            <th>Total Tests Performed</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.TestName</td>
+                <td>@item.TotalTests</td>
+            </tr>
+        }
+    </tbody>
+</table>

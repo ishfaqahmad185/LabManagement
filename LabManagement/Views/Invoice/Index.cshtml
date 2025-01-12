@@ -1,0 +1,42 @@
+﻿@model IEnumerable<LabManagement.Models.Invoice>
+
+@{
+    ViewData["Title"] = "Invoices";
+}
+
+<h2>Invoices</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Patient</th>
+            <th>Date Issued</th>
+            <th>Total Amount</th>
+            <th>Discount</th>
+            <th>Final Amount</th>
+            <th>Status</th>
+            <th>Payment Method</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var invoice in Model)
+        {
+            <tr>
+                <td>@invoice.Patient.Name</td>
+                <td>@invoice.DateIssued.ToString("yyyy-MM-dd")</td>
+                <td>@invoice.Amount.ToString("C")</td>
+                <td>@invoice.Discount.ToString("C")</td>
+                <td>@invoice.FinalAmount.ToString("C")</td>
+                <td>@invoice.Status</td>
+                <td>@invoice.PaymentMethod</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@invoice.Id" class="btn btn-warning btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@invoice.Id" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary">Create New Invoice</a>

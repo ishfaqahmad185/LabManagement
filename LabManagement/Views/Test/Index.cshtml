@@ -1,0 +1,35 @@
+﻿@model IEnumerable<LabManagement.Models.Test>
+@{
+    ViewData["Title"] = "Tests";
+}
+
+<h1>Tests</h1>
+
+<p>
+    <a href="@Url.Action("Create")" class="btn btn-primary">Add New Test</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Parameters</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var test in Model)
+        {
+            <tr>
+                <td>@test.Name</td>
+                <td>@test.Category</td>
+                <td>@test.Parameters</td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = test.Id })" class="btn btn-warning">Edit</a>
+                    <a href="@Url.Action("Delete", new { id = test.Id })" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

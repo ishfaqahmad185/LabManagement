@@ -1,0 +1,37 @@
+﻿@model IEnumerable<LabManagement.Models.Role>
+
+<h2>Role Management</h2>
+
+<a asp-action="AssignRole" class="btn btn-primary">Assign Role</a>
+
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>Role</th>
+            <th>Assigned Users</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var role in Model)
+        {
+            <tr>
+                <td>@role.Name</td>
+                <td>
+                    @if (role.Users != null && role.Users.Any())
+                    {
+                        <ul>
+                            @foreach (var user in role.Users)
+                            {
+                                <li>@user.FullName (@user.Email)</li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <em>No users assigned</em>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

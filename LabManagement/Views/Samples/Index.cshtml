@@ -1,0 +1,40 @@
+﻿@model IEnumerable<LabManagement.Models.Sample>
+
+@{
+    ViewData["Title"] = "Samples List";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a class="btn btn-primary" href="@Url.Action("Create")">Create New Sample</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Patient</th>
+            <th>Test</th>
+            <th>Collection Status</th>
+            <th>Collected At</th>
+            <th>Collected By</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var sample in Model)
+        {
+            <tr>
+                <td>@sample.Patient.Name</td>
+                <td>@sample.Test.Name</td>
+                <td>@sample.CollectionStatus</td>
+                <td>@sample.CollectedAt.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>@sample.CollectedBy.FullName</td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = sample.Id })" class="btn btn-warning">Edit</a>
+                    <a href="@Url.Action("Delete", new { id = sample.Id })" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,39 @@
+﻿@model LabManagement.Models.Patient
+@{
+    ViewData["Title"] = "Patient Details";
+}
+
+<h1>Patient Details</h1>
+
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <td>@Model.Name</td>
+        </tr>
+        <tr>
+            <th>Gender</th>
+            <td>@Model.Gender</td>
+        </tr>
+        <tr>
+            <th>Date of Birth</th>
+            <td>@Model.DateOfBirth.ToShortDateString()</td>
+        </tr>
+        <tr>
+            <th>Phone</th>
+            <td>@Model.Phone</td>
+        </tr>
+        <tr>
+            <th>Address</th>
+            <td>@Model.Address</td>
+        </tr>
+        <tr>
+            <th>Created At</th>
+            <td>@Model.CreatedAt.ToShortDateString()</td>
+        </tr>
+    </table>
+</div>
+
+<a href="@Url.Action("Edit", new { id = Model.Id })" class="btn btn-primary">Edit</a>
+<a href="@Url.Action("Delete", new { id = Model.Id })" class="btn btn-danger">Delete</a>
+<a href="@Url.Action("Index")" class="btn btn-secondary">Back to List</a>

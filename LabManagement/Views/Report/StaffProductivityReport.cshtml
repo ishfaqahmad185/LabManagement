@@ -1,0 +1,21 @@
+﻿@model IEnumerable<dynamic>
+
+<h2>Staff Productivity Report</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Staff Name</th>
+            <th>Tests Performed</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.StaffName</td>
+                <td>@item.TestsPerformed</td>
+            </tr>
+        }
+    </tbody>
+</table>

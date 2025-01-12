@@ -1,0 +1,41 @@
+﻿@model IEnumerable<LabManagement.Models.Patient>
+@{
+    ViewData["Title"] = "Patients";
+}
+
+<h1>Patients</h1>
+
+<form method="get" action="">
+    <input type="text" name="search" placeholder="Search by Name" />
+    <button type="submit">Search</button>
+</form>
+
+<a href="@Url.Action("Create")" class="btn btn-primary">Add New Patient</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Date of Birth</th>
+            <th>Phone</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var patient in Model)
+        {
+            <tr>
+                <td>@patient.Name</td>
+                <td>@patient.Gender</td>
+                <td>@patient.DateOfBirth.ToShortDateString()</td>
+                <td>@patient.Phone</td>
+                <td>
+                    <a href="@Url.Action("Details", new { id = patient.Id })">Details</a> |
+                    <a href="@Url.Action("Edit", new { id = patient.Id })">Edit</a> |
+                    <a href="@Url.Action("Delete", new { id = patient.Id })">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,48 @@
+﻿@model LabManagement.Models.ViewModels.SampleViewModel
+
+@{
+    ViewData["Title"] = "Create Sample";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="PatientId" class="control-label"></label>
+        <select asp-for="PatientId" class="form-control" asp-items="Model.Patients"></select>
+        <span asp-validation-for="PatientId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="TestId" class="control-label"></label>
+        <select asp-for="TestId" class="form-control" asp-items="Model.Tests"></select>
+        <span asp-validation-for="TestId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Sample.CollectionStatus" class="control-label"></label>
+        <input asp-for="Sample.CollectionStatus" class="form-control" />
+        <span asp-validation-for="Sample.CollectionStatus" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Sample.CollectedAt" class="control-label"></label>
+        <input asp-for="Sample.CollectedAt" class="form-control" type="datetime-local" />
+        <span asp-validation-for="Sample.CollectedAt" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Sample.Notes" class="control-label"></label>
+        <textarea asp-for="Sample.Notes" class="form-control"></textarea>
+        <span asp-validation-for="Sample.Notes" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CollectedById" class="control-label"></label>
+        <select asp-for="CollectedById" class="form-control" asp-items="Model.Users"></select>
+        <span asp-validation-for="CollectedById" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+<a href="@Url.Action("Index")" class="btn btn-secondary mt-2">Back to Samples List</a>

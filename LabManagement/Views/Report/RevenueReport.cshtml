@@ -1,0 +1,20 @@
+﻿@model LabManagement.Models.RevenueReport
+
+<h2>Revenue Report</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Total Revenue</th>
+            <th>Total Invoices</th>
+            <th>Average Invoice Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.TotalRevenue.ToString("C")</td>
+            <td>@Model.TotalInvoices</td>
+            <td>@Model.AverageInvoiceAmount.ToString("C")</td>
+        </tr>
+    </tbody>
+</table>
